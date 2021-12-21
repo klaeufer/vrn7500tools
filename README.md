@@ -9,7 +9,8 @@
 
 # TODO
 
-- CHIRP CSV -> JSON
+- CHIRP CSV -> JSON using npm csvtojson
+- convert using jq
 - filter to include only FM and Auto modes
 - https://www.repeaterbook.com/wiki/doku.php?id=api
 
