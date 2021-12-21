@@ -11,6 +11,7 @@
 
 - CHIRP CSV -> JSON
 - filter to include only FM and Auto modes
+- https://www.repeaterbook.com/wiki/doku.php?id=api
 
 # References
 
