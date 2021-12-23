@@ -101,9 +101,9 @@ def chirp2ht(channel):
 
     return result
 
-def chirp2cg(csvfile, name):
+def chirp2cg(csvfile, name, skip):
     reader = csv.DictReader(csvfile, delimiter=',', quotechar='"')
-    channelList = list(filter(lambda row: row, map(chirp2ht, reader)))
+    channelList = list(filter(lambda row: row, map(chirp2ht, reader)))[skip:]
     num_channels = len(channelList)
     if num_channels > MAX_CHANNELS:
         print(num_channels, 'channels is too many, truncating to', MAX_CHANNELS)
