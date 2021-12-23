@@ -106,7 +106,7 @@ def chirp2cg(csvfile, name, skip):
     channelList = list(filter(lambda row: row, map(chirp2ht, reader)))[skip:]
     num_channels = len(channelList)
     if num_channels > MAX_CHANNELS:
-        print(num_channels, 'channels is too many, truncating to', MAX_CHANNELS)
+        logging.warn(f'{num_channels} is too many, truncating to {MAX_CHANNELS}')
         channelList = channelList[0:MAX_CHANNELS]
     for i in range(num_channels, MAX_CHANNELS):
         channelList.append(None)
