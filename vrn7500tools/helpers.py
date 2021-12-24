@@ -35,7 +35,7 @@ def is2m(freq):
     return 130 <= float(freq) <= 170
 
 def is70cm(freq):
-    return 420 <= float(freq) <= 450
+    return 420 <= float(freq) <= 480
 
 natl_simplex = {
     "n": "146.52",
@@ -60,29 +60,36 @@ aprs = {
 def chirp2ht(channel):
     n = channel['Name']
     mode = channel['Mode']
+    rf = channel['Frequency']
 
-    if mode != 'FM' and mode != 'Auto':
+    result = {'n': n, 'rf': rf, 's': 1, 'eb': 1, 'id': 1, 'p': -2}
+
+    if mode == 'FM' or mode == 'Auto':
+        pass
+    elif mode == 'NFM':
+        result['w'] = 0
+    else:
         logging.warning(f'skipping {n}, unsupported mode {mode}')
         return None
-
-    rf = channel['Frequency']
 
     if not is2m(rf) and not is70cm(rf):
         logging.warning(f'skipping {n}, unsupported band {rf}')
         return None
 
-    result = {'n': n, 'rf': rf, 's': 1, 'eb': 1, 'id': 1, 'p': -2}
-
     try:
         offset = float(channel['Offset'])
         rfreq = float(rf)
-        if channel['Duplex'] == '+':
+        duplex = channel['Duplex']
+        if duplex == '+':
             tfreq = rfreq + offset
-        elif channel['Duplex'] == '-':
+        elif duplex == '-':
             tfreq = rfreq - offset
+        elif duplex == 'off':
+            result['td'] = 1
         else:
             tfreq = rfreq
-        result['tf'] = str(round(tfreq, 5))
+        if tfreq:
+            result['tf'] = str(round(tfreq, 5))
     except:
         pass
 
