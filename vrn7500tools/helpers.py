@@ -2,7 +2,7 @@
 #   "Name": "..."
 #   "Duplex": "+"
 #   "Offset": "5.00000"
-#   "Tone": "Tone" # accept 
+#   "Tone": "Tone" # accept
 #   "rToneFreq": "100.0"
 #   "cToneFreq": "100.0" # set only if same as rToneFreq or TSQL
 #   "DtcsCode": "023"
@@ -21,6 +21,7 @@
 #     "s": 1, # scan enabled
 #     "w": 0, # narrowband
 #     "eb": 1, # emphasis/deemphasis off
+#     "m": 1, # mute
 #     "id": 1,
 #     "p": -2 # -1 LOW, -2 MED, 0 HIGH
 # }
@@ -42,7 +43,7 @@ natl_simplex = {
     "rf": "146.52",
     "tf": "146.52",
     "ts": 10000,
-    "eb": 1,
+    "s": 1,
     "id": 1,
     "p": -2
 }
@@ -54,6 +55,7 @@ aprs = {
     "ts": 10000,
     "eb": 1,
     "id": 1,
+    "m": 1,
     "p": -2
 }
 
@@ -62,7 +64,7 @@ def chirp2ht(channel):
     mode = channel['Mode']
     rf = channel['Frequency']
 
-    result = {'n': n, 'rf': rf, 's': 1, 'eb': 1, 'id': 1, 'p': -2}
+    result = {'n': n, 'rf': rf, 's': 1, 'id': 1, 'p': -2}
 
     if mode == 'FM' or mode == 'Auto':
         pass
