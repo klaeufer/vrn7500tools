@@ -26,4 +26,3 @@ Anybody is welcome to submit issues and/or pull requests!
 
 - https://chirp.danplanet.com/projects/chirp/wiki/DevelopersToneModes
 - https://github.com/stedolan/jq/wiki/Cookbook#convert-a-csv-file-with-headers-to-json
-- 
