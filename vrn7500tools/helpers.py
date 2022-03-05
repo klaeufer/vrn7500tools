@@ -100,11 +100,6 @@ def chirp2ht(channel):
         if tone == 'Tone' or tone == 'TSQL':
             ts = int(float(channel['rToneFreq']) * 100)
             result['ts'] = ts
-            if tone == 'TSQL':
-                rs = int(float(channel['cToneFreq']) * 100)
-                result['rs'] = rs
-            else:
-                result['rs'] = ts
     except:
         pass
 
