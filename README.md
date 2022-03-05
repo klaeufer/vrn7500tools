@@ -2,6 +2,12 @@
 
 Tools for programming the Vero N-7500 and Retevis RT99 mobile amateur radios, in particular from data available at [RepeaterBook](https://repeaterbook.com/index.php/en-us/home)
 
+# Setup
+
+1. `$ pip install --user pipenv` (unless you already have `pipenv`)
+1. `$ pipenv install`
+1. `$ pipenv install -e .`
+
 # Workflow
 
 1. Perform search on RepeaterBook.
@@ -26,4 +32,3 @@ Anybody is welcome to submit issues and/or pull requests!
 
 - https://chirp.danplanet.com/projects/chirp/wiki/DevelopersToneModes
 - https://github.com/stedolan/jq/wiki/Cookbook#convert-a-csv-file-with-headers-to-json
-- 
