@@ -30,7 +30,7 @@ import logging
 import csv
 import json
 
-MAX_CHANNELS = 14 # VR-N7500/RT99 limitation
+MAX_CHANNELS = 13 # + 52, APRS VA, and APRS - VR-N7500/RT99 limitation
 
 def is2m(freq):
     return 130 <= float(freq) <= 170
@@ -48,6 +48,21 @@ natl_simplex = {
     "p": -2
 }
 
+# APRS voice alert channel
+# scan-enabled, unmuted on device but with receive tone
+# see also http://www.aprs.org/VoiceAlert3.html
+aprs_va = {
+    "n": "APRS VA",
+    "rf": "144.390",
+    "tf": "144.390",
+    "ts": 10000,
+    "rs": 10000,
+    "s": 1,
+    "id": 1,
+    "p": -2
+}
+
+# standard APRS channel - muted on device
 aprs = {
     "n": "APRS",
     "rf": "144.390",
@@ -112,9 +127,12 @@ def chirp2cg(csvfile, name, skip):
     if num_channels > MAX_CHANNELS:
         logging.warn(f'{num_channels} is too many, truncating to {MAX_CHANNELS}')
         channelList = channelList[0:MAX_CHANNELS]
+    # fill with null entries if slots left
     for i in range(num_channels, MAX_CHANNELS):
         channelList.append(None)
+    # append default channels
     channelList.append(natl_simplex)
+    channelList.append(aprs_va)
     channelList.append(aprs)
     channelGroup = {'n': name, 'chs': channelList}
     print(json.dumps(channelGroup, indent=2))

@@ -1,6 +1,6 @@
 #! /bin/bash
 
-MAX_CHANNELS=14
+MAX_CHANNELS=13
 IFS=$'\n'
 
 for (( i=1; i <= $1; i++ ))
