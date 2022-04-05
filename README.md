@@ -5,8 +5,9 @@ Tools for programming the Vero N-7500 and Retevis RT99 mobile amateur radios, in
 # Setup
 
 1. `$ pip install --user pipenv` (unless you already have `pipenv`)
-1. `$ pipenv install -r requirements.txt`
-1. `$ pipenv install -e .`
+1. `$ pipenv install -r requirements.txt` (one-time step to create the venv)
+1. `$ pipenv shell` (every time we want to use the tool)
+1. `$ pipenv install -e .` (one-time step to install the tool in the venv)
 
 # Workflow
 
