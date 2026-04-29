@@ -11,6 +11,8 @@
 #   "TStep": "5"
 #   "Comment": "Macclenny"
 
+# Mike: A mode of split and an offset of 120 will cause an output of TX Disable.
+
 # VR-N7500 JSON format
 # aprs = {
 #     "n": "APRS",
@@ -18,19 +20,21 @@
 #     "tf": "144.390",
 #     "ts": 10000, # 10 kHz
 #     "rs": 10000,
+#     "td": 0, # transmit disabled
 #     "s": 1, # scan enabled
 #     "w": 0, # narrowband
-#     "eb": 1, # emphasis/deemphasis off
+#     "eb": 1, # emphasis/deemphasis off (default on)
 #     "m": 1, # mute
-#     "id": 1,
+#     "id": 1, # ???
 #     "p": -2 # -1 LOW, -2 MED, 0 HIGH
+#     "ol": 1 # talk around repeater
 # }
 
 import logging
 import csv
 import json
 
-MAX_CHANNELS = 13 # + 52, APRS VA, and APRS - VR-N7500/RT99 limitation
+MAX_CHANNELS = 29 # + 52, APRS VA, and APRS - VR-N7500/RT99 limitation
 
 def is2m(freq):
     return 130 <= float(freq) <= 170
